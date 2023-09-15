@@ -1,0 +1,19 @@
+#
+# Run:
+#   docker-compose run --rm dev-env
+
+version: "3"
+services:
+  dev-env:
+    privileged: true
+    build:
+      context: .
+    image: ghcr.io/daddy-knows-best/dev-env:main
+    volumes:
+      # For future ssh use in development
+      - ~/.ssh:/home/ubuntu/.ssh:ro
+      - .:/dev-env
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.gitconfig:/home/ubuntu/.gitconfig:ro
+    #environment:
+    working_dir: /dev-env
