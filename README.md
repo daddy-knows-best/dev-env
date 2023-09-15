@@ -7,5 +7,5 @@ dev-env for Daddy Knows Best
 * pipenv
 * ansible
 * pre-commit
-* detect-secrets
+* detect-secrets (Yelp)
 * github action: pre-commit, docker-publish
