@@ -8,4 +8,5 @@ dev-env for Daddy Knows Best
 * ansible
 * pre-commit
 * detect-secrets (Yelp)
+* docker in docker, kubectl
 * github action: pre-commit, docker-publish
