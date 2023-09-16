@@ -15,6 +15,6 @@ services:
       - .:/dev-env
       - /var/run/docker.sock:/var/run/docker.sock
       - ~/.gitconfig:/home/ubuntu/.gitconfig:ro
-      - ~/.kube:/home/ubuntu/.kube:ro
+      #- ~/.kube:/home/ubuntu/.kube_host:ro
     #environment:
     working_dir: /dev-env

@@ -89,4 +89,6 @@ RUN set -ex && \
   sudo apt install -y kubectl && \
   echo 'alias k=kubectl' >> ~/.bashrc
 
+#COPY ~/.kube/ ${HOME}/.kube
+
 WORKDIR ${WORKDIR}
