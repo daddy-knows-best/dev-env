@@ -16,6 +16,7 @@ RUN apt update
 RUN set -ex && \
   apt install -y \
     sudo \
+    vim \
     git \
     curl \
     build-essential \
@@ -58,6 +59,7 @@ RUN set -ex && \
 	pyenv install 3.11 && \
 	pyenv global 3.11 && \
 	pip install --upgrade pip
+
 RUN set -ex && \
 	# Ansible, pipenv, pre-commit, detect-secrets
 	pip install \
@@ -65,3 +67,13 @@ RUN set -ex && \
 	pipenv \
 	pre-commit \
   detect-secrets
+
+# ohmybash
+RUN set -ex && \
+	cd ${HOME} && \
+	cp .bashrc .bashrc_copy && \
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
+	cat .bashrc_copy >> .bashrc && \
+	rm .bashrc_copy
+
+WORKDIR ${WORKDIR}
