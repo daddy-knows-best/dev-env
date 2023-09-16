@@ -39,6 +39,7 @@ RUN set -ex && \
     wget \
     xz-utils \
     zlib1g-dev \
+    apt-transport-https \
   && \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
 	chmod 0440 /etc/sudoers.d/$USERNAME
@@ -79,5 +80,13 @@ RUN set -ex && \
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
 	cat .bashrc_copy >> .bashrc && \
 	rm .bashrc_copy
+
+# kubectl cli
+RUN set -ex && \
+  bash -c "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg" && \
+  bash -c "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list" && \
+  sudo apt update && \
+  sudo apt install -y kubectl && \
+  echo 'alias k=kubectl' >> ~/.bashrc
 
 WORKDIR ${WORKDIR}
