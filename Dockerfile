@@ -3,10 +3,14 @@ ARG USERNAME=ubuntu
 ARG USER_UID=1000
 ARG USER_GID=1000
 
+LABEL "maintainer"="Daddy Knows Best"
+LABEL org.opencontainers.image.source=https://github.com/daddy-knows-best/dev-env
+LABEL org.opencontainers.image.description="Daddy's dev env"
+
 RUN groupadd --gid $USER_GID $USERNAME && \
 	useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 
-LABEL "maintainer"="Daddy Knows Best"
+
 ENV WORKDIR=/dev-env
 ENV TZ America/Central
 
@@ -16,6 +20,7 @@ RUN apt update
 RUN set -ex && \
   apt install -y \
     sudo \
+    vim \
     git \
     curl \
     build-essential \
@@ -55,9 +60,10 @@ RUN echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 #
 RUN set -ex && \
 	curl https://pyenv.run | bash && \
-	pyenv install 3.10.5 && \
-	pyenv global 3.10.5 && \
+	pyenv install 3.11 && \
+	pyenv global 3.11 && \
 	pip install --upgrade pip
+
 RUN set -ex && \
 	# Ansible, pipenv, pre-commit, detect-secrets
 	pip install \
@@ -65,3 +71,13 @@ RUN set -ex && \
 	pipenv \
 	pre-commit \
   detect-secrets
+
+# ohmybash
+RUN set -ex && \
+	cd ${HOME} && \
+	cp .bashrc .bashrc_copy && \
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
+	cat .bashrc_copy >> .bashrc && \
+	rm .bashrc_copy
+
+WORKDIR ${WORKDIR}
