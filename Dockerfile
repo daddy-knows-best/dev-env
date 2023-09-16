@@ -91,4 +91,27 @@ RUN set -ex && \
 
 #COPY ~/.kube/ ${HOME}/.kube
 
+# docker and docke-compose
+RUN set -ex && \
+  bash -c "for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done" && \
+  # Add Docker's official GPG key:
+  bash -c "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg" && \
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg && \
+  bash -c 'echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null' && \
+  sudo apt update  && \
+  sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+#COPY --from=docker:dind /usr/local/bin/docker /usr/local/bin/
+#COPY --from=docker:dind /usr/local/bin/docker-compose /usr/local/bin/
+
+# ubuntu 22.04 ssh rsa does not work for pakcer-provisioner-ansible; let's add temporary workaround
+RUN set -ex && \
+	echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
+	echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
+	sudo usermod -aG docker ${USERNAME} && \
+	sudo usermod -aG root ${USERNAME}
+
 WORKDIR ${WORKDIR}
