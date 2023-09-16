@@ -5,7 +5,7 @@ ARG USER_GID=1000
 
 LABEL "maintainer"="Daddy Knows Best"
 LABEL org.opencontainers.image.source=https://github.com/daddy-knows-best/dev-env
-LABEL org.opencontainers.image.description="Dadd's dev env"
+LABEL org.opencontainers.image.description="Daddy's dev env"
 
 RUN groupadd --gid $USER_GID $USERNAME && \
 	useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
