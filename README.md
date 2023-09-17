@@ -12,6 +12,9 @@ dev-env for Daddy Knows Best
 * github action: pre-commit, docker-publish
 
 # build in my 2011 mbp ubuntu 22.04
+
+The laptop is quite old one, but that is still working as it was supposed to be. It is a little noisy when it's building images, not a big problem for me.
+
 ```
  time docker compose build --no-cache
 [+] Building 809.0s (17/17) FINISHED                                                                                            docker:default
