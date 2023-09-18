@@ -5,6 +5,7 @@
 version: "3"
 services:
   dev-env:
+    platform: linux/amd64
     privileged: true
     build:
       context: .
