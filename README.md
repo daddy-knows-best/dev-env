@@ -35,6 +35,20 @@ $ docker compose run --rm dev-env
 03:06:30 ubuntu@3ae73b23d384 dev-env ±|main|→ ls
 Dockerfile  LICENSE  README.md  docker-compose.yaml
 03:06:33 ubuntu@3ae73b23d384 dev-env ±|main|→
+03:28:53 ubuntu@78e06ea681cd dev-env ±|main|→ pyenv versions
+  system
+* 3.11.5 (set by /home/ubuntu/.pyenv/version)
+03:29:01 ubuntu@78e06ea681cd dev-env ±|main|→ ansible --version
+ansible [core 2.15.4]
+  config file = None
+  configured module search path = ['/home/ubuntu/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/ubuntu/.pyenv/versions/3.11.5/lib/python3.11/site-packages/ansible
+  ansible collection location = /home/ubuntu/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/ubuntu/.pyenv/versions/3.11.5/bin/ansible
+  python version = 3.11.5 (main, Sep 16 2023, 18:50:11) [GCC 11.4.0] (/home/ubuntu/.pyenv/versions/3.11.5/bin/python3.11)
+  jinja version = 3.1.2
+  libyaml = True
+03:29:05 ubuntu@78e06ea681cd dev-env ±|main|→
 ```
 
 # build in my 2011 mbp ubuntu 22.04
