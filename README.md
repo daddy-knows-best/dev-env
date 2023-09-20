@@ -11,6 +11,32 @@ dev-env for Daddy Knows Best
 * docker in docker, kubectl
 * github action: pre-commit, docker-publish
 
+# how to run
+
+```
+$ docker compose pull
+[+] Pulling 14/14
+ ✔ dev-env 13 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                        225.6s
+   ✔ 445a6a12be2b Already exists                                                                     0.0s
+   ✔ 5e8cb166128c Already exists                                                                     0.0s
+   ✔ 1f4f7116f9c7 Already exists                                                                     0.0s
+   ✔ 89bc601657a4 Pull complete                                                                    136.5s
+   ✔ d2964040b138 Pull complete                                                                    136.7s
+   ✔ 58ee2e35305f Pull complete                                                                    136.8s
+   ✔ ff7916016ca2 Pull complete                                                                    152.8s
+   ✔ a137eb12f207 Pull complete                                                                    202.9s
+   ✔ f0c43ee4ac0a Pull complete                                                                    203.5s
+   ✔ 93093980a774 Pull complete                                                                    205.3s
+   ✔ 706010b009a5 Pull complete                                                                    223.1s
+   ✔ c54d94ba6b3c Pull complete                                                                    223.3s
+   ✔ 5ac553ae35ad Pull complete                                                                    223.4s
+
+$ docker compose run --rm dev-env
+03:06:30 ubuntu@3ae73b23d384 dev-env ±|main|→ ls
+Dockerfile  LICENSE  README.md  docker-compose.yaml
+03:06:33 ubuntu@3ae73b23d384 dev-env ±|main|→
+```
+
 # build in my 2011 mbp ubuntu 22.04
 
 The laptop is quite old one, but that is still working as it was supposed to be. It is a little noisy when it's building images, not a big problem for me.
