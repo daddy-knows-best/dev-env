@@ -60,26 +60,26 @@ RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 RUN echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 #
 RUN set -ex && \
-	curl https://pyenv.run | bash && \
-	pyenv install 3.11 && \
-	pyenv global 3.11 && \
-	pip install --upgrade pip
+  curl https://pyenv.run | bash && \
+  pyenv install 3.11 && \
+  pyenv global 3.11 && \
+  pip install --upgrade pip
 
 RUN set -ex && \
-	# Ansible, pipenv, pre-commit, detect-secrets
-	pip install \
+  # Ansible, pipenv, pre-commit, detect-secrets
+  pip install \
   ansible \
-	pipenv \
-	pre-commit \
+  pipenv \
+  pre-commit \
   detect-secrets
 
 # ohmybash
 RUN set -ex && \
-	cd ${HOME} && \
-	cp .bashrc .bashrc_copy && \
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
-	cat .bashrc_copy >> .bashrc && \
-	rm .bashrc_copy
+  cd ${HOME} && \
+  cp .bashrc .bashrc_copy && \
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
+  cat .bashrc_copy >> .bashrc && \
+  rm .bashrc_copy
 
 # kubectl cli
 RUN set -ex && \
@@ -106,9 +106,9 @@ RUN set -ex && \
 
 # ubuntu 22.04 ssh rsa does not work for pakcer-provisioner-ansible; let's add temporary workaround
 RUN set -ex && \
-	echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
-	echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
-	sudo usermod -aG docker ${USERNAME} && \
-	sudo usermod -aG root ${USERNAME}
+  echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
+  echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
+  sudo usermod -aG docker ${USERNAME} && \
+  sudo usermod -aG root ${USERNAME}
 
 WORKDIR ${WORKDIR}
