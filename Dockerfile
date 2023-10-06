@@ -2,6 +2,7 @@ FROM ubuntu:22.04
 ARG USERNAME=ubuntu
 ARG USER_UID=1000
 ARG USER_GID=1000
+ENV WORKDIR=/dev-env
 
 LABEL "maintainer"="Daddy Knows Best"
 LABEL org.opencontainers.image.source=https://github.com/daddy-knows-best/dev-env
@@ -11,7 +12,6 @@ RUN groupadd --gid $USER_GID $USERNAME && \
 	useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 
-ENV WORKDIR=/dev-env
 ENV TZ America/Central
 
 ARG DEBIAN_FRONTEND=noninteractive
