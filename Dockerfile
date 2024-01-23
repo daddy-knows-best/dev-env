@@ -60,8 +60,8 @@ RUN echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 #
 RUN set -ex && \
   curl https://pyenv.run | bash && \
-  pyenv install 3.11 && \
-  pyenv global 3.11 && \
+  pyenv install 3.10.6 && \
+  pyenv global 3.10.6 && \
   pip install --upgrade pip
 
 RUN set -ex && \
@@ -90,7 +90,7 @@ RUN set -ex && \
 
 #COPY ~/.kube/ ${HOME}/.kube
 
-# docker and docke-compose
+# docker and docker-compose
 RUN set -ex && \
   bash -c "for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done" && \
   # Add Docker's official GPG key:
