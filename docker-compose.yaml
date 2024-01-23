@@ -1,6 +1,6 @@
 #
 # Run:
-#   docker-compose run --rm dev-env
+#   docker compose run --rm dev-env
 
 version: "3"
 services:
