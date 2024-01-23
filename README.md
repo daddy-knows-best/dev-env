@@ -1,6 +1,9 @@
 # dev-env
 dev-env for Daddy Knows Best
 
+# history
+01/22/2024 downgraded python version to 3.10.6
+
 # installed packages
 
 * pyenv
