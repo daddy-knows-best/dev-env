@@ -39,6 +39,8 @@ RUN set -ex && \
     xz-utils \
     zlib1g-dev \
     apt-transport-https \
+    jq \
+    unzip \
   && \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
 	chmod 0440 /etc/sudoers.d/$USERNAME
