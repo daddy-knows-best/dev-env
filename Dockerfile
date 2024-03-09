@@ -112,4 +112,11 @@ RUN set -ex && \
   sudo usermod -aG docker ${USERNAME} && \
   sudo usermod -aG root ${USERNAME}
 
+# hci
+RUN set -ex && \
+  cd ${HOME} && \
+  curl iac.sh/hci > hci && \
+  chmod +x hci && \
+  sudo mv hci /usr/local/bin
+
 WORKDIR ${WORKDIR}
