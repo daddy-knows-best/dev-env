@@ -114,6 +114,7 @@ RUN set -ex && \
 
 # hci
 RUN set -ex && \
+  cd ${HOME} && \
   curl iac.sh/hci > hci && \
   chmod +x hci && \
   sudo mv hci /usr/local/bin
