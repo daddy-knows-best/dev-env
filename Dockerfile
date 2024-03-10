@@ -43,7 +43,6 @@ RUN set -ex && \
     unzip \
     iputils-ping \
     dnsutils \
-    nmap \
     traceroute \
     iproute2 \
     netcat \
@@ -57,9 +56,6 @@ USER $USERNAME
 ENV HOME "/home/${USERNAME}"
 ENV LC_ALL "C.UTF-8"
 ENV LANG "en_US.UTF-8"
-
-#RUN rm -rf /var/lib/apt/lists/*
-#RUN apt clean
 
 # pyenv
 ENV PYENV_ROOT "${HOME}/.pyenv"
@@ -136,5 +132,8 @@ RUN set -ex && \
   echo "PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
 
 ENV PATH "${PATH}:/usr/local/go/bin"
+
+#RUN rm -rf /var/lib/apt/lists/*
+#RUN apt clean
 
 WORKDIR ${WORKDIR}
