@@ -15,8 +15,8 @@ ENV TZ America/Central
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update
 RUN set -ex && \
+  apt update && \
   apt install -y \
     sudo \
     vim \
@@ -41,6 +41,12 @@ RUN set -ex && \
     apt-transport-https \
     jq \
     unzip \
+    iputils-ping \
+    dnsutils \
+    traceroute \
+    iproute2 \
+    netcat \
+    psmisc \
   && \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
 	chmod 0440 /etc/sudoers.d/$USERNAME
@@ -50,9 +56,6 @@ USER $USERNAME
 ENV HOME "/home/${USERNAME}"
 ENV LC_ALL "C.UTF-8"
 ENV LANG "en_US.UTF-8"
-
-#RUN rm -rf /var/lib/apt/lists/*
-#RUN apt clean
 
 # pyenv
 ENV PYENV_ROOT "${HOME}/.pyenv"
@@ -125,8 +128,12 @@ RUN set -ex && \
   wget -q https://go.dev/dl/go1.22.1.linux-amd64.tar.gz && \
   sudo rm -rf /usr/local/go && \
   sudo tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz && \
+  rm -rf ${HOME}/*.gz && \
   echo "PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
 
 ENV PATH "${PATH}:/usr/local/go/bin"
+
+#RUN rm -rf /var/lib/apt/lists/*
+#RUN apt clean
 
 WORKDIR ${WORKDIR}
