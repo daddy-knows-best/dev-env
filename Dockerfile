@@ -16,7 +16,7 @@ ENV TZ America/Central
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN set -ex && \
-  apt update \
+  apt update && \
   apt install -y \
     sudo \
     vim \
