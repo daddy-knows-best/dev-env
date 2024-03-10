@@ -119,4 +119,14 @@ RUN set -ex && \
   chmod +x hci && \
   sudo mv hci /usr/local/bin
 
+# golang 1.22.1
+RUN set -ex && \
+  cd ${HOME} && \
+  wget -q https://go.dev/dl/go1.22.1.linux-amd64.tar.gz && \
+  sudo rm -rf /usr/local/go && \
+  sudo tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz && \
+  echo "PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
+
+ENV PATH "${PATH}:/usr/local/go/bin"
+
 WORKDIR ${WORKDIR}
