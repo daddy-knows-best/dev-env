@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 ARG USERNAME=ubuntu
 ARG USER_UID=1000
 ARG USER_GID=1000
@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.source=https://github.com/daddy-knows-best/dev-en
 LABEL org.opencontainers.image.description="Daddy's dev env"
 
 RUN groupadd --gid $USER_GID $USERNAME && \
-	useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
+  useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 ENV TZ America/Central
 
@@ -18,38 +18,38 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN set -ex && \
   apt update && \
   apt install -y \
-    sudo \
-    vim \
-    git \
-    curl \
-    build-essential \
-    libbz2-dev \
-    libffi-dev \
-    liblzma-dev \
-    libncursesw5-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    libssl-dev \
-    libxml2-dev \
-    libxmlsec1-dev \
-    llvm \
-    make \
-    tk-dev \
-    wget \
-    xz-utils \
-    zlib1g-dev \
-    apt-transport-https \
-    jq \
-    unzip \
-    iputils-ping \
-    dnsutils \
-    traceroute \
-    iproute2 \
-    netcat \
-    psmisc \
+  sudo \
+  vim \
+  git \
+  curl \
+  build-essential \
+  libbz2-dev \
+  libffi-dev \
+  liblzma-dev \
+  libncursesw5-dev \
+  libreadline-dev \
+  libsqlite3-dev \
+  libssl-dev \
+  libxml2-dev \
+  libxmlsec1-dev \
+  llvm \
+  make \
+  tk-dev \
+  wget \
+  xz-utils \
+  zlib1g-dev \
+  apt-transport-https \
+  jq \
+  unzip \
+  iputils-ping \
+  dnsutils \
+  traceroute \
+  iproute2 \
+  netcat \
+  psmisc \
   && \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
-	chmod 0440 /etc/sudoers.d/$USERNAME
+  chmod 0440 /etc/sudoers.d/$USERNAME
 
 # set environmental variables
 USER $USERNAME
