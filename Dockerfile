@@ -108,7 +108,7 @@ RUN set -ex && \
   sudo apt update  && \
   sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# ubuntu 22.04 ssh rsa does not work for pakcer-provisioner-ansible; let's add temporary workaround
+# ubuntu 24.04 ssh rsa does not work for pakcer-provisioner-ansible; let's add temporary workaround
 RUN set -ex && \
   echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
   echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
