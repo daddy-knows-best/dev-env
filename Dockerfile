@@ -109,11 +109,11 @@ RUN set -ex && \
   sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # ubuntu 24.04 ssh rsa does not work for pakcer-provisioner-ansible; let's add temporary workaround
-RUN set -ex && \
-  echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
-  echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
-  sudo usermod -aG docker ${USERNAME} && \
-  sudo usermod -aG root ${USERNAME}
+#RUN set -ex && \
+#  echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
+#  echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
+#  sudo usermod -aG docker ${USERNAME} && \
+#  sudo usermod -aG root ${USERNAME}
 
 # hci
 RUN set -ex && \
