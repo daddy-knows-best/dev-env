@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 ARG USERNAME=ubuntu
-ARG USER_UID=1000
-ARG USER_GID=1000
+#ARG USER_UID=1000
+#ARG USER_GID=1000
 ENV WORKDIR=/dev-env
 
 LABEL "maintainer"="Daddy Knows Best"
