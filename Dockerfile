@@ -45,7 +45,7 @@ RUN set -ex && \
   dnsutils \
   traceroute \
   iproute2 \
-  netcat \
+  #netcat \
   psmisc \
   && \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
