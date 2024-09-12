@@ -8,8 +8,8 @@ LABEL "maintainer"="Daddy Knows Best"
 LABEL org.opencontainers.image.source=https://github.com/daddy-knows-best/dev-env
 LABEL org.opencontainers.image.description="Daddy's dev env"
 
-RUN groupadd --gid $USER_GID $USERNAME && \
-  useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
+#RUN groupadd --gid $USER_GID $USERNAME && \
+RUN  useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 ENV TZ America/Central
 
