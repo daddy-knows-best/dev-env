@@ -1,5 +1,5 @@
 # Announcement
-This repo is currently based on ubuntu 22.04, and soon the repo will be upgraded with ubuntu 24.04
+This repo is currently based on ubuntu 22.04, and soon the repo will be upgraded with ubuntu 24.04 : ISSUE-39
 
 # dev-env
 dev-env for Daddy Knows Best
