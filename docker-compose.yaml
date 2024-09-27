@@ -2,7 +2,6 @@
 # Run:
 #   docker compose run --rm dev-env
 
-version: "3"
 services:
   dev-env:
     platform: linux/amd64
