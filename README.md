@@ -8,8 +8,8 @@ dev-env for Daddy Knows Best
 
 # history
 
-01/22/2024 downgraded python version to 3.10.6
-09/26/2024 upgraded the base ubuntu to 22.04 [ISSUE-39](https://github.com/daddy-knows-best/dev-env/issues/39)
+- 01/22/2024 downgraded python version to 3.10.6
+- 09/26/2024 upgraded the base ubuntu to 22.04 [ISSUE-39](https://github.com/daddy-knows-best/dev-env/issues/39)
 
 # installed packages
 
