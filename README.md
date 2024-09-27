@@ -1,21 +1,25 @@
-# Announcement
-This repo is currently based on ubuntu 22.04, and soon the repo will be upgraded with ubuntu 24.04 : ISSUE-39
+# announcement
+
+None
 
 # dev-env
+
 dev-env for Daddy Knows Best
 
 # history
+
 01/22/2024 downgraded python version to 3.10.6
+09/26/2024 upgraded the base ubuntu to 22.04 [ISSUE-39](https://github.com/daddy-knows-best/dev-env/issues/39)
 
 # installed packages
 
-* pyenv
-* pipenv
-* ansible
-* pre-commit
-* detect-secrets (Yelp)
-* docker in docker, kubectl
-* github action: pre-commit, docker-publish
+- pyenv
+- pipenv
+- ansible
+- pre-commit
+- detect-secrets (Yelp)
+- docker in docker, kubectl
+- github action: pre-commit, docker-publish
 
 # how to run
 
