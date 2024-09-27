@@ -1,15 +1,10 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 ARG USERNAME=ubuntu
-ARG USER_UID=1000
-ARG USER_GID=1000
 ENV WORKDIR=/dev-env
 
 LABEL "maintainer"="Daddy Knows Best"
 LABEL org.opencontainers.image.source=https://github.com/daddy-knows-best/dev-env
 LABEL org.opencontainers.image.description="Daddy's dev env"
-
-RUN groupadd --gid $USER_GID $USERNAME && \
-	useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 ENV TZ America/Central
 
@@ -18,42 +13,43 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN set -ex && \
   apt update && \
   apt install -y \
-    sudo \
-    vim \
-    git \
-    curl \
-    build-essential \
-    libbz2-dev \
-    libffi-dev \
-    liblzma-dev \
-    libncursesw5-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    libssl-dev \
-    libxml2-dev \
-    libxmlsec1-dev \
-    llvm \
-    make \
-    tk-dev \
-    wget \
-    xz-utils \
-    zlib1g-dev \
-    apt-transport-https \
-    jq \
-    unzip \
-    iputils-ping \
-    dnsutils \
-    traceroute \
-    iproute2 \
-    netcat \
-    psmisc \
+  sudo \
+  vim \
+  git \
+  curl \
+  build-essential \
+  libbz2-dev \
+  libffi-dev \
+  liblzma-dev \
+  libncursesw5-dev \
+  libreadline-dev \
+  libsqlite3-dev \
+  libssl-dev \
+  libxml2-dev \
+  libxmlsec1-dev \
+  llvm \
+  make \
+  tk-dev \
+  wget \
+  xz-utils \
+  zlib1g-dev \
+  apt-transport-https \
+  jq \
+  unzip \
+  iputils-ping \
+  dnsutils \
+  traceroute \
+  iproute2 \
+  psmisc \
   && \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
-	chmod 0440 /etc/sudoers.d/$USERNAME
+  chmod 0440 /etc/sudoers.d/$USERNAME
 
 # set environmental variables
 USER $USERNAME
 ENV HOME "/home/${USERNAME}"
+
+
 ENV LC_ALL "C.UTF-8"
 ENV LANG "en_US.UTF-8"
 
@@ -108,7 +104,7 @@ RUN set -ex && \
   sudo apt update  && \
   sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# ubuntu 22.04 ssh rsa does not work for pakcer-provisioner-ansible; let's add temporary workaround
+# inherited from ubuntu 22.04 ssh rsa does not work for pakcer-provisioner-ansible; let's add temporary workaround
 RUN set -ex && \
   echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
   echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
@@ -133,7 +129,7 @@ RUN set -ex && \
 
 ENV PATH "${PATH}:/usr/local/go/bin"
 
-#RUN rm -rf /var/lib/apt/lists/*
-#RUN apt clean
+RUN sudo rm -rf /var/lib/apt/lists/*
+RUN sudo apt clean
 
 WORKDIR ${WORKDIR}
