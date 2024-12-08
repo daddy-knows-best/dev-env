@@ -129,7 +129,7 @@ RUN set -ex && \
 
 ENV PATH "${PATH}:/usr/local/go/bin"
 
-RUN sudo rm -rf /var/lib/apt/lists/*
 RUN sudo apt clean
+RUN sudo apt autoclean
 
 WORKDIR ${WORKDIR}
