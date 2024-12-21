@@ -118,12 +118,12 @@ RUN set -ex && \
   chmod +x hci && \
   sudo mv hci /usr/local/bin
 
-# golang 1.22.1
+# golang 1.23.4
 RUN set -ex && \
   cd ${HOME} && \
-  wget -q https://go.dev/dl/go1.22.1.linux-amd64.tar.gz && \
+  wget -q https://go.dev/dl/go1.23.4.linux-amd64.tar.gz && \
   sudo rm -rf /usr/local/go && \
-  sudo tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz && \
+  sudo tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz && \
   rm -rf ${HOME}/*.gz && \
   echo "PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
 
