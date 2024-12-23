@@ -6,9 +6,9 @@ LABEL "maintainer"="Daddy Knows Best"
 LABEL org.opencontainers.image.source=https://github.com/daddy-knows-best/dev-env
 LABEL org.opencontainers.image.description="Daddy's dev env"
 
-ENV TZ America/Central
-
+ENV TZ="America/Chicago"
 ARG DEBIAN_FRONTEND=noninteractive
+RUN echo ${TZ} > /etc/timezone
 
 RUN set -ex && \
   apt update && \
@@ -61,8 +61,8 @@ RUN echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 #
 RUN set -ex && \
   curl https://pyenv.run | bash && \
-  pyenv install 3.10.6 && \
-  pyenv global 3.10.6 && \
+  pyenv install 3.12.8 && \
+  pyenv global 3.12.8 && \
   pip install --upgrade pip
 
 RUN set -ex && \
