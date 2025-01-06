@@ -41,6 +41,7 @@ RUN set -ex && \
   traceroute \
   iproute2 \
   psmisc \
+  mysql-client \
   && \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
   chmod 0440 /etc/sudoers.d/$USERNAME

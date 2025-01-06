@@ -8,6 +8,7 @@ dev-env for Daddy Knows Best
 
 # history
 
+- 01/05/2024 installed mysql-client-core-8.0
 - 12/22/2024 upgraded python 3.12.8
 - 12/21/2024 upgraded go 1.23.4
 - 09/26/2024 upgraded the base ubuntu to 24.04 [ISSUE-39](https://github.com/daddy-knows-best/dev-env/issues/39)
