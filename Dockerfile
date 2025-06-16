@@ -66,6 +66,10 @@ RUN set -ex && \
   pyenv global 3.12.8 && \
   pip install --upgrade pip
 
+# uv to replace pyenv in the future
+RUN set -ex && \
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+
 RUN set -ex && \
   # Ansible, pipenv, pre-commit, detect-secrets
   pip install \
